@@ -31,7 +31,8 @@ public class BoardEntity {
     private BoardColumnEntity getFilteredColumn(Predicate<BoardColumnEntity> filter){
         return boardColumns.stream()
                 .filter(filter)
-                .findFirst().orElseThrow();
+                .findFirst().orElseThrow(() -> new IllegalStateException("Coluna do tipo INITIAL não encontrada"));
+
     }
 
 }
